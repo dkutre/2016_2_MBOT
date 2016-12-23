@@ -31,17 +31,17 @@
 
     create() {
       // set new apple pos
-      var newPos = this.getRandomCoord();
+      let newPos = this.getRandomCoord();
       console.log(newPos);
       // not on previous pos
-      if (newPos.x == this.pos.x && newPos.y == this.pos.y) {
+      if (newPos.x === this.pos.x && newPos.y === this.pos.y) {
         newPos = this.getRandomCoord();
         return;
       }
 
       // not on snake
-      for (var i = 0; i < this.game.Snake.getSize(); i++) {
-        if (newPos.x == this.game.Snake.body[i].x && newPos.y == this.game.Snake.body[i].y) {
+      for (let i = 0; i < this.game.Snake.getSize(); i++) {
+        if (newPos.x === this.game.Snake.body[i].x && newPos.y === this.game.Snake.body[i].y) {
           newPos = this.getRandomCoord();
           return;
         }

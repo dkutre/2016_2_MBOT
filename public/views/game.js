@@ -11,7 +11,7 @@
     }
 
     _init() {
-      var socket = new WebSocket("ws://localhost:8080/game");
+      let socket = new WebSocket("ws://localhost:8080/game");
       socket.onopen = function() {
         alert("Соединение установлено.");
       };

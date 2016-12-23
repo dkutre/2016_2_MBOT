@@ -15,8 +15,8 @@
       };
 
       // snake body
-      var defaultPosX = Math.ceil(this.game.canvasWidth / 2);
-      var defaultPosY = Math.ceil(this.game.canvasHeight / 2);
+      let defaultPosX = Math.ceil(this.game.canvasWidth / 2);
+      let defaultPosY = Math.ceil(this.game.canvasHeight / 2);
 
       this.body = [
         {x: defaultPosX, y: defaultPosY - this.game.cellSize},
@@ -50,8 +50,8 @@
       }
 
       //проверка на самопересечение
-      for (var i = 0; i < this.getSize() - 1; i++) {
-        if (newSnakeElement.x == this.body[i].x && newSnakeElement.y == this.body[i].y) {
+      for (let i = 0; i < this.getSize() - 1; i++) {
+        if (newSnakeElement.x === this.body[i].x && newSnakeElement.y === this.body[i].y) {
           this.game.setStatus(this.game.STATUS.GAMEOVER);
           return;
         }
@@ -90,8 +90,8 @@
 
 
     render() {
-      for (var i = this.getSize() - 1; i != -1; i--) {
-        if (i == 0) {
+      for (let i = this.getSize() - 1; i !== -1; i--) {
+        if (i === 0) {
           this.game.context.fillStyle = this.game.snakeHeadColor;
         } else {
           this.game.context.fillStyle = this.game.snakeColor;
@@ -105,15 +105,15 @@
 
     addElement() {
       // get place to adding
-      var last_index = this.body.length - 1;
+      let last_index = this.body.length - 1;
 
-      var newSnakeElement = {
+      let newSnakeElement = {
         x: this.body[last_index].x,
         y: this.body[last_index].y
       };
 
-      var x_diff = this.body[last_index].x - this.body[last_index - 1].x;
-      var y_diff = this.body[last_index].y - this.body[last_index - 1].y;
+      let x_diff = this.body[last_index].x - this.body[last_index - 1].x;
+      let y_diff = this.body[last_index].y - this.body[last_index - 1].y;
 
       if (x_diff > 0) {
         newSnakeElement.x += this.game.cellSize;
@@ -129,7 +129,7 @@
       this.body.push(newSnakeElement);
 
       // check on win
-      if (this.getSize() == this.game.sceneWidth * this.game.sceneHeight) {
+      if (this.getSize() === this.game.sceneWidth * this.game.sceneHeight) {
         return true;
       }
 
@@ -143,7 +143,7 @@
 
 
     isRoute(value) {
-      return this.route == this.ROUTE[value];
+      return this.route === this.ROUTE[value];
     }
   }
   //export

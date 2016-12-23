@@ -18,6 +18,21 @@
 
     }
 
+    resume() {
+      let session = new window.SessionModel({}, {});
+      session.is_authenticated()
+        .then(result => {
+            if (result) {
+              this.show();
+              alert('вы авторизованы');
+            } else {
+              alert('вы не авторизованиы =(');
+              this.router.go('/');
+            }
+          }
+        );
+    }
+
     render(options) {
       this._createComponents();
       this._createControls();
@@ -39,15 +54,21 @@
           })
           .catch(error => console.log(error));
       });
+
       this._component.addEventListenerOnChild('click', 'mainpage__buttons__singlegame', event => {
         event.preventDefault();
         this.router.go('/sgame');
+      });
+
+      this._component.addEventListenerOnChild('click', 'mainpage__buttons__exit', event => {
+        event.preventDefault();
+        this.router.go('/');
       });
     }
 
     _createControls() {
       let buttons = [
-         {
+        {
           text: 'Single Player',
           attrs: {
             type: 'button',

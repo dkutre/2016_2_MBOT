@@ -49,7 +49,7 @@
 
       function step() {
         setTimeout(function () {
-          var now = Date.now(),
+          let now = Date.now(),
             dt = now - (time || now);
           time = now;
           if (!isStopped()) {
@@ -116,7 +116,7 @@
     }
 
     onStatusChange(newstatus, oldstatus) {
-      if (newstatus == this.STATUS.PLAY && oldstatus != this.STATUS.PAUSE) {
+      if (newstatus === this.STATUS.PLAY && oldstatus != this.STATUS.PAUSE) {
         this.apple.create();
       }
     }
